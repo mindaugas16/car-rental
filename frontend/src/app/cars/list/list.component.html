@@ -1,0 +1,26 @@
+<app-search></app-search>
+<div class="container">
+  <div class="row">
+    <div class="col-4" *ngFor="let car of cars">
+      <div class="card" [routerLink]="['/cars/view/' + car?._id]">
+        <div class="image-wrapper">
+          <img class="card-img-top"
+               [src]="car.photos && car.photos.length ? car.photos[0] :
+             'https://wsa1.pakwheels.com/assets/default-display-image-car-638815e7606c67291ff77fd17e1dbb16.png'"
+               [alt]="car.model">
+        </div>
+        <div class="card-body">
+          <div class="d-flex">
+            <h5 class="card-title">{{car?.brand}} {{car?.model}}</h5>
+            <b class="ml-auto" *ngIf="car?.priceMin">{{car?.priceMin}}{{'€/min'}}</b>
+          </div>
+          <p class="card-text">{{car?.description || '...'}}</p>
+          <div>
+            <button class="btn btn-primary mr-2" (click)="onRent(car)" appClickStopPropagation>Nuomotis</button>
+            <button class="btn btn-light">Daugiau</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

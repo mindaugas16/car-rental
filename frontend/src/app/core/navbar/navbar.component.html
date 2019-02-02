@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      </ul>
+      <ul class="navbar-nav my-2 my-lg-0">
+        <ng-container *ngIf="!logged; else loggedIn">
+          <li class="btn btn-light mr-2" [routerLink]="'auth/login'">
+            {{'Prisijungti'}}
+          </li>
+          <li class="btn btn-light" [routerLink]="'auth/sign-up'">
+            {{'Registruotis'}}
+          </li>
+        </ng-container>
+        <ng-template #loggedIn>
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-light d-flex align-items-center" id="dropdownBasic1" ngbDropdownToggle>
+              <i class="icon icon--avatar"></i>
+              <span>{{user.name}}</span>
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button class="dropdown-item" [routerLink]="'/rents'">Nuomos</button>
+              <button class="dropdown-item" [routerLink]="'/invoices'">Sąskaitos</button>
+              <button class="dropdown-item" routerLink="/settings">Paskyra</button>
+              <button class="dropdown-item" (click)="onLogout()">Atsijungti</button>
+            </div>
+          </div>
+          <button class="btn btn-light ml-2" [routerLink]="'/admin'" *appRoleVisibility="[roles.ADMIN]"
+          [routerLinkActive]="'active'">
+            {{'Admin panel'}}
+          </button>
+        </ng-template>
+      </ul>
+    </div>
+  </div>
+</nav>

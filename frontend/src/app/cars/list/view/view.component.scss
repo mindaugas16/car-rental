@@ -1,0 +1,16 @@
+.gallery-controls {
+  justify-content: center;
+  span:first-child {
+    margin-right: 10px;
+  }
+}
+
+.image-box {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  overflow: hidden;
+  margin-bottom: 12px;
+}

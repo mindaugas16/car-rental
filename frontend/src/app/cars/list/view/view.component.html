@@ -1,0 +1,56 @@
+<app-breadcrumb [title]="'Grįžti į sąrašą'" [action]="onGoBack"></app-breadcrumb>
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-4">
+      <h4>{{car?.brand}} {{car?.model}}</h4>
+      <div class="image-box">
+        <img
+          [src]="car?.photos && car?.photos.length ? car?.photos[currentImageIndex] : 'https://wsa1.pakwheels.com/assets/default-display-image-car-638815e7606c67291ff77fd17e1dbb16.png'"
+          class="w-100 h-100">
+      </div>
+      <div class="d-flex gallery-controls">
+        <span (click)="onPrevImage()">
+          <fa name="arrow-left"></fa>
+        </span>
+        <span (click)="onNextImage()">
+          <fa name="arrow-right"></fa>
+        </span>
+      </div>
+      <div class="d-flex align-items-center justify-content-center mt-4">
+        <button class="btn btn-primary mr-3" (click)="onRent()">Nuomotis</button>
+        <button class="btn btn-primary">Rezervuoti</button>
+      </div>
+    </div>
+    <div class="col-8">
+      <div class="card mb-4">
+        <div class="card-header">
+          Kainos
+        </div>
+        <div class="card-body">
+          1 min - {{car?.priceMin | currency}},
+          1 val - {{car?.priceMin * 35 | currency}},
+          1 para - {{car?.priceMin * 35 * 6 | currency}},
+          1 sav. - {{car?.priceMin * 35 * 20 | currency}}
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          Aprašymas
+        </div>
+        <div class="card-body">
+          {{car?.description}}
+        </div>
+      </div>
+
+      <div class="card mb-4">
+        <div class="card-header">
+          Papildoma informacija
+        </div>
+        <div class="card-body">
+          Automobilis šiuo metu yra - {{car?.location.address}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

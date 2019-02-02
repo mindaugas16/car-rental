@@ -1,0 +1,19 @@
+.form-horizontal {
+  label {
+    text-align: right;
+  }
+}
+
+.divider {
+  .col {
+
+    &:first-child {
+      border-right: 1px solid #333333;
+      padding-right: 45px;
+    }
+
+    &:nth-child(2) {
+      padding-left: 45px;
+    }
+  }
+}

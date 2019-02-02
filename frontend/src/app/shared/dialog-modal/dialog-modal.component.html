@@ -1,0 +1,9 @@
+<h4 *ngIf="title">{{title}}</h4>
+<p *ngIf="text">
+  {{text}}
+</p>
+<div class="d-flex justify-content-end buttons">
+  <button *ngFor="let button of buttons" (click)="button.action(); activeModal.close()" [ngClass]="button.cssClasses">
+    {{button.title}}
+  </button>
+</div>

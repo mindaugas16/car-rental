@@ -1,0 +1,61 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom w-100">
+    <h1 class="h2">Nuomos</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <ng-select
+        [items]="rentStatuses"
+        [multiple]="true"
+        [closeOnSelect]="false"
+        [searchable]="false"
+        bindLabel="name"
+        (change)="onChange()"
+        placeholder="Filtruoti"
+        [(ngModel)]="selectedStatuses">
+      </ng-select>
+    </div>
+  </div>
+  <ngb-accordion #acc="ngbAccordion"
+                 *ngIf="selectedStatuses.length ? filteredRents && filteredRents.length : rents && rents.length; else emptyList">
+    <ngb-panel *ngFor="let rent of (selectedStatuses.length ? filteredRents : rents)"
+               title="{{rent.startDate}} - {{rent.endDate}} (Statusas: {{rent.status | rentStatusPipe}} )">
+      <ng-template ngbPanelContent>
+        <ul class="card-text list-unstyled">
+          <li>
+            Automobilis:
+            <a [routerLink]="'/cars/view/' + rent.car._id ">{{rent.car.brand}} {{rent.car.model}}</a>
+          </li>
+          <hr/>
+          <li>Atsiėmimo vieta: {{rent.pickUpLocation.address}}</li>
+          <li>Data: {{rent.startDate}}</li>
+          <hr/>
+          <li>Grąžinimo vieta: {{rent.dropOffLocation.address}}</li>
+          <li>Data: {{rent.endDate}}</li>
+          <hr/>
+          <li>Kaina: {{rent.price | currency}}</li>
+          <li *ngIf="rent?.invoice">
+            Sąskaita:
+            <a (click)="onDownloadInvoice(rent)">(Atsisiųsti)</a>
+          </li>
+          <li class="ml-3">Statusas: {{rent?.invoice?.payedAt ? 'Apmokėta' : 'Neapmokėta'}}</li>
+          <li class="ml-3">Išrašyta: {{rent?.invoice?.createdAt | date:'medium'}}</li>
+          <li class="ml-3" *ngIf="rent?.invoice && rent?.invoice?.payedAt">
+            Apmokėta: {{rent?.invoice?.payedAt | date:'medium'}}</li>
+        </ul>
+        <div>
+          <button class="btn btn-primary mr-3" *ngIf="rent.status === 0"
+                  (click)="onStatusChange(rent, rentStatus.PAYED)">Apmokėti
+          </button>
+          <button class="btn btn-warning mr-3" *ngIf="rent.status === 0 || rent.status === 1"
+                  (click)="onStatusChange(rent, rentStatus.CANCELED)">Atšaukti
+          </button>
+        </div>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+
+  <ng-template #emptyList>
+    Jūsų nuomos istorija tuščia
+  </ng-template>
+</div>
+
+

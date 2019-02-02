@@ -1,0 +1,47 @@
+<div class="search">
+  <div class="container">
+    <h4>{{'Paieška'}}</h4>
+    <form class="form-inline">
+      <div class="form-group d-flex flex-column align-items-baseline">
+        <label for="email">Jūsų vieta</label>
+        <input type="email" class="form-control" id="email">
+      </div>
+      <div class="form-group d-flex flex-column align-items-baseline">
+        <label for="pickupDate">
+          {{'Atsiėmimo data'}}
+        </label>
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" id="pickupDate"
+                 name="dp" [(ngModel)]="pickUpModel" ngbDatepicker #d="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group d-flex flex-column align-items-baseline">
+        <label for="dropoffDate">
+          {{'Grąžinimo data'}}
+        </label>
+        <div class="input-group">
+          <input class="form-control" placeholder="yyyy-mm-dd" id="dropoffDate"
+                 name="dp" [(ngModel)]="dropOffModel" ngbDatepicker #do="ngbDatepicker">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary calendar" (click)="do.toggle()" type="button"></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group d-flex flex-column align-items-baseline">
+        <label>Automobilio tipas</label>
+        <select>
+          <option>Sedanas</option>
+        </select>
+      </div>
+      <div class="form-group d-flex flex-column align-items-baseline">
+        <label>Kuro tipas</label>
+        <select>
+          <option>Dyzelinas</option>
+        </select>
+      </div>
+    </form>
+  </div>
+</div>

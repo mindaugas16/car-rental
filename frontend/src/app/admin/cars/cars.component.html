@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-2">
+    <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-10">
+    <div class="d-flex justify-content-between align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">Automobiliai</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <button class="btn btn-sm btn-outline-secondary" (click)="onEditModal()">Pridėti</button>
+          <button class="btn btn-sm btn-outline-secondary" (click)="generateSummary()">Spausdinti</button>
+        </div>
+      </div>
+    </div>
+    <ngx-datatable
+      class="bootstrap"
+      [rows]="rows"
+      [loadingIndicator]="loadingIndicator"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="40"
+      [footerHeight]="40"
+      [limit]="10"
+      [rowHeight]="'auto'"
+      [reorderable]="reorderable">
+      <ngx-datatable-column [width]="30" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                            [resizeable]="false">
+        <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                     let-selectFn="selectFn">
+          <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)"/>
+        </ng-template>
+        <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                     let-onCheckboxChangeFn="onCheckboxChangeFn">
+          <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)"/>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column prop="brand"></ngx-datatable-column>
+      <ngx-datatable-column prop="model"></ngx-datatable-column>
+      <ngx-datatable-column prop="category">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{getCategory(value)}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column prop="productionYear"></ngx-datatable-column>
+      <ngx-datatable-column prop="mileage"></ngx-datatable-column>
+      <ngx-datatable-column prop="color"></ngx-datatable-column>
+      <ngx-datatable-column prop="location">
+
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{value.address}}
+        </ng-template>
+
+      </ngx-datatable-column>
+      <ngx-datatable-column prop="priceMin"></ngx-datatable-column>
+      <ngx-datatable-column prop="description">
+        <ng-template ngx-datatable-cell-template let-value="value">
+          {{(value.length>20)? (value | slice:0:20)+'..':(value)}}
+        </ng-template>
+
+
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Action">
+        <ng-template ngx-datatable-header-template let-value="value">
+          {{'Actions'}}
+        </ng-template>
+        <ng-template ngx-datatable-cell-template let-row="row">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary" (click)="onEditModal(row)">
+              <fa name="edit"></fa>
+            </button>
+            <button type="button" class="btn btn-secondary" (click)="onDelete(row)">
+              <fa name="trash"></fa>
+            </button>
+          </div>
+        </ng-template>
+      </ngx-datatable-column>
+
+    </ngx-datatable>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-breadcrumb title="Paskyra"></app-breadcrumb>
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+      <div class="card d-flex align-items-center">
+        <img class="card-img-top"
+             style="width: 100px; margin-top: 10px"
+             src="https://image.freepik.com/free-icon/user-image-with-black-background_318-34564.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Mindaugas Morkunas</h5>
+          <p class="card-subtitle">m.morkunas@stud.vgtu.lt</p>
+         <ul class="list-unstyled">
+           <li>Gimimo data: 1996-01-01</li>
+           <li>Vairuotojo paž. nr: 2345222</li>
+         </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <h4>Keisti slaptažodį</h4>
+      <form [formGroup]="form" class="form-horizontal">
+        <div class="alert alert-danger" role="alert" *ngIf="form.invalid">
+          Neteisingas senas slaptažodis
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-3">Senas slaptažodis</label>
+          <div class="col-9">
+            <input type="password" formControlName="oldPassword" class="form-control">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="control-label col-3">Naujas slaptažodis</label>
+          <div class="col-9">
+            <input type="password" class="form-control" formControlName="newPassword">
+          </div>
+
+          <!--<label class="error">{{errorMessage}}</label>-->
+          <!--<label class="success">{{successMessage}}</label>-->
+        </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-9">
+            <button type="submit" class="btn btn-light">Keisti</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

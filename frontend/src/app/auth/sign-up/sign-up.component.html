@@ -1,0 +1,58 @@
+<app-breadcrumb title="Registracija"></app-breadcrumb>
+<div class="container d-flex justify-content-center">
+
+  <form [formGroup]="form" class="col-6">
+    <div class="alert alert-danger" role="alert" *ngIf="form.errors && form.errors.invalid">
+      Klaida. Neužpildyti visi privalomi registracijos laukai
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="form.errors && form.errors.badRequest">
+      Klaida. Neteisingi duomenys
+    </div>
+    <div class="form-group has-error">
+      <label [ngClass]="{'text-danger': form.controls['name'].invalid && form.controls['name'].dirty}">Vardas*</label>
+      <input type="text" formControlName="name" class="form-control"
+             [ngClass]="{'is-invalid': form.controls['name'].invalid && form.controls['name'].dirty}">
+    </div>
+    <div class="form-group">
+      <label
+        [ngClass]="{'text-danger': form.controls['surname'].invalid && form.controls['surname'].dirty}">Pavarde*</label>
+      <input type="text" formControlName="surname" class="form-control"
+             [ngClass]="{'is-invalid': form.controls['surname'].invalid && form.controls['surname'].dirty}">
+    </div>
+    <div class="form-group">
+      <label [ngClass]="{'text-danger': form.controls['email'].invalid && form.controls['email'].dirty}">El.
+        pastas*</label>
+      <input type="email" formControlName="email" class="form-control"
+             [ngClass]="{'is-invalid': form.controls['email'].invalid && form.controls['email'].dirty}">
+    </div>
+    <div class="form-group">
+      <label [ngClass]="{'text-danger': form.controls['birthDate'].invalid && form.controls['birthDate'].dirty}">
+        Gimimo data*</label>
+      <div class="input-group">
+        <input class="form-control" placeholder="yyyy-mm-dd" formControlName="birthDate"
+               name="dp" ngbDatepicker #d="ngbDatepicker">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+            <fa name="calendar"></fa>
+          </button>
+        </div>
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label
+        [ngClass]="{'text-danger': form.controls['driverLicenseNumber'].invalid && form.controls['driverLicenseNumber'].dirty}">Vairuotojo
+        pazymejimo numeris*</label>
+      <input type="number" formControlName="driverLicenseNumber" class="form-control"
+             [ngClass]="{'is-invalid': form.controls['driverLicenseNumber'].invalid && form.controls['driverLicenseNumber'].dirty}">
+    </div>
+    <div class="form-group">
+      <label [ngClass]="{'text-danger': form.controls['password'].invalid && form.controls['password'].dirty}">Slaptažodis*</label>
+      <input type="password" formControlName="password" class="form-control"
+             [ngClass]="{'is-invalid': form.controls['password'].invalid && form.controls['password'].dirty}">
+    </div>
+    <label><input type="checkbox"> Susipažinau ir sutinku su <b>taisyklėmis</b></label><br/>
+
+    <button type="submit" (click)="onCreateUser()" class="btn btn-success">Registruotis</button>
+  </form>
+</div>

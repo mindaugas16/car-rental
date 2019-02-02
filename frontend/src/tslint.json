@@ -1,0 +1,18 @@
+{
+    "extends": "../tslint.json",
+    "rules": {
+      "quotemark": [true, "single", "jsx-double"],
+        "directive-selector": [
+            true,
+            "attribute",
+            "app",
+            "camelCase"
+        ],
+        "component-selector": [
+            true,
+            "element",
+            "app",
+            "kebab-case"
+        ]
+    }
+}

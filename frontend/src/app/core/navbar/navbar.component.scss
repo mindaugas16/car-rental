@@ -1,0 +1,26 @@
+.navbar {
+  background: #656565!important;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+.navbar-brand {
+  color: #fff;
+}
+
+.icon {
+  &--avatar {
+    background: url("https://www.iconspng.com/clipart/-abstract-user-icon-1/-abstract-user-icon-1.svg") no-repeat center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+
+.active {
+  background: #333333!important;
+  color: white!important;
+}

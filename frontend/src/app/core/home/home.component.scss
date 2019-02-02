@@ -1,0 +1,59 @@
+.search {
+  background: #EBEBEB;
+  padding: 15px 0;
+  h4 {
+    color: #333333;
+  }
+}
+
+.description {
+  color: #666666;
+  font-size: 14px;
+  text-align: justify;
+}
+
+.information {
+  background: #656565;
+  padding: 15px 0;
+  h4 {
+    color: #fff;
+    text-align: center;
+  }
+  .card {
+    background: transparent;
+    border: 0;
+  }
+}
+
+agm-map {
+  height: 300px;
+}
+
+::ng-deep ngb-datepicker {
+  width: 100%;
+  .ngb-dp-month {
+    width: 50%;
+  }
+}
+
+::ng-deep ngb-datepicker-month-view {
+  background-color: white!important;
+}
+
+.custom-day {
+  text-align: center;
+  padding: 0.185rem 0.25rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+}
+.custom-day.focused {
+  background-color: #e6e6e6;
+}
+.custom-day.range, .custom-day:hover {
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+.custom-day.faded {
+  background-color: rgba(2, 117, 216, 0.5);
+}

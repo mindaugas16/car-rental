@@ -1,0 +1,84 @@
+<div class="search">
+  <div class="container">
+    <h4>{{'Išsirinkite automobolį'}}</h4>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label>
+            {{'Atsiėmimo vieta'}}
+          </label>
+          <ng-select
+            [items]="locations"
+            [multiple]="false"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            bindLabel="name"
+            placeholder="Nuomos centrai..."
+            [(ngModel)]="selectedLocation">
+          </ng-select>
+        </div>
+        <span>Laikotarpis</span><br/>
+        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t" outsideDays="hidden"
+                        [minDate]="{year: 2019, month: 1, day: 21}">
+        </ngb-datepicker>
+
+        <ng-template #t let-date let-focused="focused">
+  <span class="custom-day"
+        [class.focused]="focused"
+        [class.range]="isRange(date)"
+        [class.faded]="isHovered(date) || isInside(date)"
+        (mouseenter)="hoveredDate = date"
+        (mouseleave)="hoveredDate = null">
+    {{ date.day }}
+  </span>
+        </ng-template>
+        <div class="form-group">
+          <label>
+            {{'Pasirinkite automobilio kategorijas'}}
+          </label>
+          <ng-select
+            [items]="carCategories"
+            [multiple]="true"
+            [closeOnSelect]="false"
+            [searchable]="false"
+            bindLabel="name"
+            placeholder="Kategorijos..."
+            [(ngModel)]="selected">
+          </ng-select>
+        </div>
+        <button type="submit" class="btn btn-primary" routerLink="/cars/list">
+          {{'Ieškoti'}}
+        </button>
+      </div>
+      <div class="col">
+        <p class="description">
+          Lorem ipsum - tai fiktyvus tekstas naudojamas spaudos ir grafinio dizaino pasaulyje jau nuo XVI
+          a. pradžios. Lorem Ipsum tapo standartiniu fiktyviu tekstu, kai nežinomas spaustuvininkas atsitiktine tvarka
+          išdėliojo raides atspaudų prese ir tokiu būdu sukūrė raidžių egzempliorių. Šis tekstas išliko beveik
+          nepasikeitęs ne tik penkis amžius, bet ir įžengė i kopiuterinio grafinio dizaino laikus. Jis išpopuliarėjo XX
+          a. šeštajame dešimtmetyje, kai buvo išleisti Letraset lapai su Lorem Ipsum ištraukomis, o vėliau
+          -leidybinė sistema AldusPageMaker, kurioje buvo ir Lorem Ipsum versija.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="information">
+  <div class="container">
+    <h4>{{'Kodėl verta rinktis mus?'}}</h4>
+
+    <div class="card" *ngFor="let item of [1,2,3]">
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus
+          odio, vestibulum in vulputate at, tempus viverra turpis. 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<agm-map [latitude]="lat" [longitude]="lng">-->
+  <!--<agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>-->
+<!--</agm-map>-->

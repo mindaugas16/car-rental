@@ -1,0 +1,35 @@
+<app-breadcrumb title="Prisijungimas"></app-breadcrumb>
+<div class="container">
+  <div class="row divider">
+    <form [formGroup]="form" class="col form-horizontal">
+      <div class="alert alert-danger" role="alert" *ngIf="form.invalid && form.controls['email'].dirty && form.controls['password'].dirty">
+        El. paštas arba slaptažodis neteisingas
+      </div>
+      <div class="form-group row">
+        <label for="email" class="control-label col-3">El. paštas</label>
+        <div class="col-9">
+          <input type="email" formControlName="email" class="form-control" required id="email">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="control-label col-3">Slaptažodis</label>
+        <div class="col-9">
+          <input type="password" class="form-control" formControlName="password" required>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3"></div>
+        <div class="col-9">
+          <label><input type="checkbox"> Prisiminti mane</label><br/>
+          <button type="submit" (click)="login()" class="btn btn-success">Prisijungti</button>
+        </div>
+      </div>
+    </form>
+    <div class="col d-flex flex-column justify-content-center">
+      <div>
+        <b>Dar neturi paskyros?</b><br/>
+        <button class="btn btn-primary" [routerLink]="'/auth/sign-up'">Registruokis</button>
+      </div>
+    </div>
+  </div>
+</div>

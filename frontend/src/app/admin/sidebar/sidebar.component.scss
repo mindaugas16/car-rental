@@ -1,0 +1,12 @@
+ul {
+  padding-top: 50px;
+  li {
+    border-bottom: 1px solid #dddddd;
+    a {
+      color: #656565;
+      &.active, &:hover {
+        color: black;
+      }
+    }
+  }
+}
